@@ -1,0 +1,70 @@
+<% include header.html%>
+
+
+<div id="all">
+    <div class="all-title">
+        <h2>全部学校</h2>
+    </div>
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>学校全称</th>
+            <th>学校地址</th>
+            <th>学校校区</th>
+            <th>学校校徽</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="item" v-for="school in allschools">
+            <td>{{school.s_id}}</td>
+            <td>{{school.s_name}}</td>
+            <td>{{school.s_address}}</td>
+            <td>{{school.s_campus}}</td>
+            <td class="schoolbadge">
+                <img :src="school.s_badge" alt="">
+            </td>
+            <td>
+                <a href="javascript:void(0);" class="button bg-blue">修改</a>
+                <a href="javascript:void(0);" class="button bg-green" v-if="school.showornot == 0" @click="showornot(school.s_id,school.showornot)">显示</a>
+                <a href="javascript:void(0);" class="button bg-red" v-else @click="showornot(school.s_id,school.showornot)">隐藏</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<hr>
+
+<div id="add">
+    <div class="add-title">
+        <h2>开通学校</h2>
+    </div>
+    <div class="common">
+        <form id="add-school" class="add-form" enctype="multipart/form-data">
+            <label class="label">
+                学校名称
+                <input type="text" class="input" placeholder="输入学校全称" name="schoolname" v-model="schoolname">
+            </label>
+            <label class="label">
+                校区(没有可不填)
+                <input type="text" class="input" placeholder="输入学校校区，没有可不填" name="campus" v-model="campus">
+            </label>
+            <label class="label">
+                学校详细地址
+                <input type="text" class="input" placeholder="学校详细地址" name="schooladdress" v-model="schooladdress">
+            </label>
+            <label class="label">
+                上传校徽图片
+                <input type="file" class="input" name="badge" id="badge">
+            </label>
+            <button type="button" class="button bg-yellow" @click="add_school">确认开通</button>
+        </form>
+    </div>
+</div>
+
+<% include footer.html%>
+<script src="/javascripts/school.js"></script>
+<script src="/javascripts/jquery.form.js"></script>
+<link rel="stylesheet" href="/stylesheets/common.css">

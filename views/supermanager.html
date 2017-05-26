@@ -1,0 +1,66 @@
+<% include header.html%>
+<link rel="stylesheet" href="/stylesheets/supermanager.css">
+<script src="/javascripts/jquery.form.js"></script>
+<script src="/javascripts/supermanager.js"></script>
+<style>
+    #all-manager tr td{
+        text-align: center;
+    }
+    a{
+        cursor: pointer;
+    }
+</style>
+<div id="all-manager">
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>管理员账号</th>
+                <th>管理员</th>
+                <th>级别</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(a,index) in all_admins">
+                <td>{{index+1}}</td>
+                <td>{{a.ad_username}}</td>
+                <td>{{a.ad_nickname}}</td>
+                <td v-if="a.ad_level == 2">普通管理员</td>
+                <td>
+                    <a class="button border-red">撤销</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="add-manager">
+    <h3>添加管理员</h3>
+    <form class="manager-form" id="manager-form" method="POST">
+        <div class="alert alert-red" v-if="error_info">{{error_msg}}</div>
+        <label class="label">
+            管理员账户:
+            <input type="text" class="input" name="admin_username" id="admin_username">
+        </label>
+        <label class="label">
+            管理员初始密码:
+            <input type="password" class="input" name="admin_password" id="admin_password">
+        </label>
+        <label class="label">
+            管理员昵称:
+            <input type="text" class="input" name="admin_nickname" id="admin_nickname">
+        </label>
+        <label class="label">
+            管理员级别
+            <select class="input" name="admin_level" id="admin_level">
+                <option value="">请选择</option>
+                <option value="1">超级管理员</option>
+                <option value="2">普通管理员</option>
+            </select>
+        </label>
+        <button type="button" class="button bg-blue" @click="sure_add">确认添加</button>
+    </form>
+</di>
+
+<% include footer.html%>

@@ -1,0 +1,19 @@
+#all-manager,
+#add-manager{
+    width: 100%;
+}
+
+#add-manager{
+    margin-top: 30px;
+}
+
+#add-manager h3{
+    text-align: center;
+}
+
+#add-manager .manager-form{
+    width: 340px;
+    margin: 0 auto;
+}
+
+

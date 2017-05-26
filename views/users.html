@@ -1,0 +1,79 @@
+<%include header.html%>
+<script src="/javascripts/users.js"></script>
+<link rel="stylesheet" href="/stylesheets/users.css">
+<div id="users">
+    <!--搜索表单-->
+    <div class="search-user">
+        <form id="search-form">
+            <input type="text" class="input" name="q" placeholder="根据账户搜索" v-model="q">
+            <button type="button" class="button border-main" @click="search">搜索</button>
+        </form>
+    </div>
+
+    <div class="users-list">
+        <ul class="items">
+            <li class="item" v-for="user in all_users">
+                <div class="header-img">
+                    <img :src="user.u_headerpic" alt="">
+                </div>
+                <div class="info">
+                    <div class="nickname">
+                        {{user.a_nickname}}
+                    </div>
+                    <div class="email">
+                        {{user.a_email}}
+                    </div>
+                    <div class="created-time">
+                        {{user.created_time}}
+                    </div>
+                </div>
+                <div class="action">
+                    <button class="button border-dot" @click="get_id(user.a_id)">
+                        封号
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div id="mask" v-if="show_hide_mask">
+        <div class="choose-reason">
+            <div class="mask-title">
+                <h4>封号理由</h4>
+            </div>
+            <div class="mask-body">
+                <ul class="reasons">
+                    <li>
+                        <label>
+                            <input type="radio" name="reason" value="该用户上传虚假诈骗色情暴力的信息">
+                            该用户上传虚假诈骗色情暴力的信息
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" name="reason" value="该用户重复发布同一商品">
+                            该用户重复发布同一商品
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" name="reason" value="该用户发布违法物品">
+                            该用户发布违法物品
+                        </label>
+                    </li>
+                    <li>
+                        <textarea placeholder="其他理由，请简要描述，不超过30个字" class="input" v-model="other_reason"></textarea>
+                    </li>
+                </ul>
+            </div>
+            <div class="mask-footer">
+                <button class="button bg-blue" @click="add_blacklist">确定</button>
+                <button class="button bg-yellow" @click="cancel">取消</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<%include footer.html%>

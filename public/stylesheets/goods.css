@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: Fira Code, Iosevka, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #FFFFFF;
+    min-height: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+#goods{
+    width: 100%;
+}
+
+#goods .screen-items{
+    width: 40%;
+    margin:0 auto;
+}
+#goods .screen-items fieldset{
+    border-color: #D7D7D7;
+}
+#goods .screen-items select{
+    display: inline-block;
+    width: 40%;
+}
+
+#goods .goods-items{
+    margin-top: 20px;
+    list-style: none;
+}
+#goods .goods-items .goods-item{
+    display: inline-block;
+    width: 32%;
+    margin: 0px 10px 10px 0px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    padding-bottom: 10px;
+}
+
+.goods-item fieldset{
+    border-radius: 5px;
+    border-color: #D7D7D7;
+}
+
+.goods-item fieldset legend{
+    font-size:16px;
+}
+
+#search-form input{
+    width: 81%;
+    float: left;
+    margin-right: 4px;
+}
+
+.goods-item .goods-pictures{
+    width: 100%;
+}
+
+.goods-item .goods-pictures .goods-picture{
+    width: 23%;
+    height: 80px;
+    overflow: hidden;
+}
+
+.goods-item .goods-name,
+.goods-item .goods-desc{
+    text-align: center;
+    margin-top: 3px;
+}
+
+.goods-item .goods-desc,
+.goods-item .else-info{
+    border-left: 2px solid #1081BD;
+}
+.goods-item .else-info{
+    display: inline-block;
+}
+.goods-item .user-info{
+    display: inline-block;
+    float: right;
+    color: #999696;
+}
+
+.goods-item .else-info span{
+    padding-right: 10px;
+}
+
+.goods-item .else-info b:before{
+    content: '¥';
+}
+
+.goods-item .else-info b{
+    color: #F75450;
+    padding-right: 10px;
+}
+
+.goods-item .action{
+    margin-top: 20px;
+    text-align: center;
+}
+.goods-item a{
+    cursor: pointer;
+}
+
+#mask{
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background: rgba(51,51,51,.4);
+    height: 100%;
+}
+
+#mask .reason-area{
+    width: 30%;
+    margin: 70px auto;
+    background: #ffffff;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+#mask .reason-area textarea{
+    resize: none;
+    height: 150px;
+}

@@ -1,0 +1,50 @@
+#want{
+    width: 100%;
+    position: relative;
+}
+
+#want .sift{
+    width: 40%;
+    margin: 0 auto;
+}
+
+#sift-form select{
+    display: inline-block;
+    width: 40%;
+}
+
+#wanttable{
+    text-align: center;
+}
+
+#wanttable .w-desc{
+    width: 200px;
+    text-align: left;
+}
+
+#wanttable .w-name{
+    text-align: left;
+    width: 110px;
+}
+
+#wanttable .w-price:before{
+    content: "¥";
+}
+
+.reject-area{
+    width: 300px;
+    position: absolute;
+    z-index: 10;
+    border: 1px solid #67C375;
+    border-radius: 5px;
+    left: 33%;
+    top:21%;
+    text-align: center;
+    background: #fff;
+}
+
+.reject-area textarea{
+    resize: none;
+    height: 180px;
+    margin: 0px auto;
+}

@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: Fira Code, Iosevka, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #FFFFFF;
+    min-height: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+#users .search-user{
+    width: 400px;
+    margin: 0 auto;
+}
+.search-user #search-form input{
+    width: 300px;
+    float: left;
+    margin-right: 4px;
+}
+
+#users .users-list{
+    margin-top: 30px;
+    width: 100%;
+}
+.users-list .items{
+    list-style: none;
+    width: 100%;
+}
+.users-list .items .item{
+    display: inline-block;
+    width: 15%;
+    border:1px solid #999696;
+    margin-right: 10px;
+    padding: 5px 0px 5px 0px;
+    border-radius: 4px;
+    line-height: 23px;
+}
+
+.item .header-img{
+    width: 70%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.item .header-img img{
+    width: 70%;
+    border-radius: 50%;
+    overflow: hidden;
+    height: 88px;
+}
+.item .info .nickname,
+.item .info .email,
+.item .info .created-time,
+.item .action{
+    text-align: center;
+}
+.item .info .nickname{
+    font-size: 16px;
+}
+.item .info .email{
+    font-size: 15px;
+}
+
+#mask{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background: rgba(51,51,51,.4);
+}
+
+#mask .choose-reason{
+    width: 30%;
+    border:1px solid #D7D7D7;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 4px;
+    padding-bottom: 20px;
+}
+
+#mask .choose-reason .mask-title{
+    border-bottom: 1px solid #D7D7D7;
+    padding-left: 10px;
+    margin-top: 5px;
+}
+
+#mask .choose-reason .mask-body{
+    width: 86%;
+    margin: 10px auto;
+}
+
+.choose-reason .mask-body .reasons li{
+    line-height: 30px;
+}
+
+.reasons li textarea{
+    width: 270px;
+    resize: none;
+    height:100px;
+}
+
+#mask .mask-footer{
+    border-top: 1px solid #D7D7D7;
+    padding-top: 10px;
+    text-align: center;
+}

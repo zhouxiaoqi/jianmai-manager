@@ -1,0 +1,36 @@
+<% include header.html%>
+<style>
+    a{
+        cursor: pointer;
+    }
+</style>
+<div id="report">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>举报商品名</th>
+                <th>举报时间</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(r,index) in all_reports">
+                <td>{{index+1}}</td>
+                <td>{{r.g_name}}</td>
+                <td>{{r.r_ctime}}</td>
+                <td><a class="button bg-red" @click="alreadyDealWith(r.g_id)">已受理</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<style>
+    #report tr td{
+        text-align: center;
+    }
+    #report .goods-name{
+        color: #DB736C;
+    }
+</style>
+<script src="/javascripts/report.js"></script>
+<% include footer.html%>

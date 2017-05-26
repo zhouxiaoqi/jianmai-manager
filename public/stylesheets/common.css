@@ -1,0 +1,50 @@
+#all .all-title {
+    text-align: center;
+}
+
+#all table {
+    margin-top: 20px;
+}
+
+#all table tbody .item td {
+    text-align: center;
+}
+
+.item .imgforpc{
+    width: 55px;
+    height: 55px;
+    border-radius:5px;
+}
+
+.item .schoolbadge img{
+    width:60px;
+    height:60px;
+}
+
+#add {
+    margin-top: 50px;
+}
+
+#add .add-title {
+    text-align: center;
+}
+
+#add .common {
+    width: 60%;
+    margin: 0 auto;
+    border: 1px solid #E3EEEC;
+    margin-top: 5px;
+    height: 100%;
+    overflow: auto;
+}
+
+#add .common .add-form {
+    width: 60%;
+    margin: 10px auto;
+    text-align: left;
+    line-height: 30px;
+}
+
+.add input {
+    margin-bottom: 20px;
+}

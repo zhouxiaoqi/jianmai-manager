@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        <%= title %>
+    </title>
+    <script src="/javascripts/jquery.js"></script>
+    <script src="/javascripts/pintuer.js"></script>
+    <script src="/vue/vue.js"></script>
+    <link rel="stylesheet" href="/stylesheets/pintuer.css">
+    <link rel="stylesheet" href="/stylesheets/admin.css">
+</head>
+
+<body style="background-color:#f2f9fd;">
+    <div class="header bg-main">
+        <div class="logo margin-big-left fadein-top">
+            <h1><img src="images/y.jpg" class="radius-circle rotate-hover" height="50" alt="" />简买后台管理中心</h1>
+        </div>
+        <div class="head-l">
+            &nbsp;&nbsp;
+            <a class="button button-little bg-red" href="/login/logout">退出登录</a>
+        </div>
+    </div>
+    <script> 
+        $.post('/getLevel',function (admin) {  
+            if(admin.ad_level === 1){
+                var doc = '<h2><a href="/super">所有管理员</a></h2>';
+                $('#admin').append(doc);
+            }
+         })
+    </script>
+    <div class="leftnav" id="admin">
+        <div class="leftnav-title"><strong>菜单列表</strong></div>
+        <h2>网站管理</h2>
+        <ul>
+            <li><a href="/advertisement">广告管理</a></li>
+        </ul>
+        <h2>商品管理</h2>
+        <ul>
+            <li><a href="/goods">所有商品</a></li>
+            <li><a href="/report">举报信息</a></li>
+        </ul>
+        <h2>求购信息管理</h2>
+        <ul>
+            <li><a href="/want">所有求购信息</a></li>
+        </ul>
+        <h2>用户管理</h2>
+        <ul>
+            <li><a href="/users" @click="load_users">所有用户</a></li>
+            <li><a href="/blacklist">黑名单</a></li>
+        </ul>
+        <h2>商品分类管理</h2>
+        <ul>
+            <li><a href="/type">类别管理</a></li>
+        </ul>
+        <h2>学校信息管理</h2>
+        <ul>
+            <li><a href="/school">学校管理</a></li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        $(function() {
+            $(".leftnav h2").click(function() {
+                $(this).next().slideToggle(200);
+                $(this).toggleClass("on");
+            })
+            // $(".leftnav ul li a").click(function() {
+            //     $("#a_leader_txt").text($(this).text());
+
+            // })
+        });
+    </script>
+    <div class="admin">

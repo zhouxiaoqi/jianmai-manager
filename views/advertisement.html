@@ -1,0 +1,55 @@
+<% include header.html%>
+<link rel="stylesheet" href="/stylesheets/advertisement.css">
+<div id="advertisement">
+    <h2>广告管理区</h2>
+    <div class="all-advertisement">
+        <table class="table table-responsive" style="text-align: center">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>图片</th>
+                    <th>描述</th>
+                    <th>位置</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="a in advers">
+                    <td>{{a.ad_id}}</td>
+                    <td><img :src="a.ad_image" alt="" style="width: 200px;height: 100px; overflow:hidden;"></td>
+                    <td>{{a.ad_desc}}</td>
+                    <td>{{a.ad_position}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="add-advertisement">
+        <form id="advertisement-form" enctype="multipart/form-data">
+            <label>
+                广告图位置
+                <select name="ad_id" id="ad_postion" class="input">
+                    <option value="">请选择</option>
+                    <option v-for="p in positions" :value="p.ad_id">
+                        {{p.ad_position}}
+                    </option>
+                </select>
+            </label>
+            <label class="label">
+                广告图:轮播(1440*900) 右侧广告(200*200)
+                <input type="file" id="ad_picture" name="ad_image" class="input">
+            </label>
+
+            <label class="label">
+                广告描述
+                <textarea class="input" name="ad_desc" id="ad_desc" placeholder="广告描述"></textarea>
+            </label>
+            <button class="button bg-blue" type="button" @click="ad_submit">上传</button>
+            <input type="reset" value="清空" class="button bg-red">
+        </form>
+    </div>
+</div>
+
+
+<script src="/javascripts/jquery.form.js"></script>
+<script src="/javascripts/advertisement.js"></script>
+
+<% include footer.html%>

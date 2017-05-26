@@ -1,0 +1,19 @@
+#advertisement{
+
+    width: 100%;
+}
+
+#advertisement h2{
+    text-align: center;
+}
+
+
+#advertisement .add-advertisement{
+    width: 30%;
+    margin: 40px auto;
+}
+
+.add-advertisement textarea{
+    resize: none;
+    height: 160px;
+}

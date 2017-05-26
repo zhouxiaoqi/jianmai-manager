@@ -1,0 +1,88 @@
+<% include header.html%>
+
+
+<div id="all">
+    <div class="all-title">
+        <h2>全部类别</h2>
+    </div>
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>名称</th>
+            <th>类别图(PC端)</th>
+            <th>类别图(移动端)</th>
+            <th>描述</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="item" v-for="(type,index) in alltypes">
+            <td>{{type.t_id}}</td>
+            <td>{{type.t_typename}}</td>
+            <td>
+                <img :src="type.t_typeimgforpc" alt="" class="imgforpc">
+            </td>
+            <td>
+                <img :src="type.t_typeimgforphone" alt="">
+            </td>
+            <td style="width: 280px;text-align: left">
+                {{type.t_typedesc}}
+            </td>
+            <td>
+                <a href="javascript:void(0);" class="button bg-green" @click="get_SingleType(index)">
+                    修改
+                </a>
+                <a href="javascript:void(0);" class="button bg-blue" v-if="type.showornot == 0"
+                   @click="showornot(type.t_id,type.showornot)">
+                    显示
+                </a>
+                <a href="javascript:void(0);" class="button bg-red" v-else @click="showornot(type.t_id,type.showornot)">隐藏</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<div id="add">
+    <div class="add-title">
+        <h2 v-if="single_type == ''">增加类别</h2>
+        <h2 v-else>修改类别</h2>
+    </div>
+    <div class="common">
+        <form class="add-form" id="add-form" :enctype="enctype">
+            <input type="hidden" :value="single_type.t_id" name="t_id">
+            <label class="label">
+                类别名称
+                <input type="text" class="input" placeholder="类别名称" name="typename" id="typename"
+                       v-if="single_type.t_typename == '' "/>
+                <input type="text" class="input" placeholder="类别名称" name="typename" id="typename"  v-else  :value="single_type.t_typename"/>
+            </label>
+            <label class="label" v-if="single_type == '' ">
+                类别图（PC端
+                <input type="file" class="input" accept="image/*" name="typeimg" id="typeimgforpc">
+            </label>
+
+            <label class="label" v-if="single_type == '' ">
+                类别图（移动端）
+                <input type="file" class="input" name="typeimg" accept="image/*" id="typeimgforphone">
+            </label>
+            <label class="label">
+                类别描述
+                <textarea rows="5" class="input" placeholder="多行文本框" name="typedesc" id="typedesc" v-if="single_type.t_typedesc == ''"></textarea>
+                <textarea rows="5" class="input" placeholder="多行文本框" name="typedesc" id="typedesc" v-else>{{single_type.t_typedesc}}</textarea>
+            </label>
+            <label class="label">
+                <button type="button" class="button bg-green" v-if="single_type == '' " @click="insert_type" >确认添加</button>
+                <button type="button" class="button bg-red" v-else @click="update_type">确认修改</button>
+            </label>
+        </form>
+    </div>
+</div>
+
+<% include footer.html%>
+
+<link rel="stylesheet" href="/stylesheets/common.css">
+<script src="/javascripts/jquery.form.js"></script>
+<script src="/javascripts/type.js"></script>
+

@@ -1,0 +1,75 @@
+<% include header.html %>
+
+<div id="want">
+
+    <div class="sift">
+        <fieldset>
+            <legend>筛选查询</legend>
+            <form action="" method="" id="sift-form">
+                <select class="input" name="school">
+                    <option value="">请选择</option>
+                    <option v-for="school in allSchools" :value="school.s_id">
+                        {{school.s_name}}
+                    </option>
+                </select>
+                <select class="input" name="showornot">
+                    <option value="">请选择</option>
+                    <option value="0">未审核</option>
+                    <option value="1">已审核</option>
+                </select>
+                <button class="button bg-primary">查询</button>
+            </form>
+        </fieldset>
+    </div>
+
+    <table class="table table-responsive " id="wanttable">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>商品名</th>
+            <th>商品描述</th>
+            <th>商品价格</th>
+            <th>交易地点</th>
+            <th>发布人</th>
+            <th>商品状态</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="want in allWants" v-if="want.w_showornot == 1 || want.w_showornot == 0">
+            <td>{{want.w_id}}</td>
+            <td class="w-name">{{want.w_name}}</td>
+            <td class="w-desc">{{want.w_desc}}</td>
+            <td class="w-price">{{want.w_price}}</td>
+            <td>{{want.w_place}}</td>
+            <td>{{want.a_email}}</td>
+            <td v-if="want.w_showornot == 1">已审核</td>
+            <td v-if="want.w_showornot == 0">未审核</td>
+            <td v-if="want.w_showornot == 1">
+                <button class="button border-blue" @click="checkornot(want.w_showornot,want.w_id)">下架</button>
+            </td>
+            <td v-if="want.w_showornot == 0">
+                <button class="button border-yellow" @click="get_wid(want.w_id)">驳回</button>
+                <button class="button border-green" @click="checkornot(want.w_showornot,want.w_id)">通过</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="reject-area" v-if="reject">
+        <textarea class="input" placeholder="请填写驳回理由:如 求购商品描述不明确" v-model="reason"></textarea>
+        <button class="button bg-green" @click="rejectSubmit">
+            确认
+        </button>
+        <button class="button bg-red" @click="reject = false">
+            取消
+        </button>
+    </div>
+
+
+</div>
+
+
+<% include footer.html %>
+<link rel="stylesheet" href="/stylesheets/want.css">
+<script type="text/javascript" src="/javascripts/want.js"></script>

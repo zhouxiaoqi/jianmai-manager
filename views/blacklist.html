@@ -1,0 +1,32 @@
+<% include header.html %>
+<style>
+    #blacklist-table tr td{
+        text-align: center;
+    }
+</style>
+<table class="table table-condensed" id="blacklist-table">
+    <thead>
+        <tr>
+            <th>编号</th>
+            <th>账户</th>
+            <th>昵称</th>
+            <th>封号原因</th>
+            <th>封号时间</th>
+            <th>操作</th>
+        </tr>
+        <tr v-for="blacklist in all_blacklists">
+            <td>{{blacklist.b_id}}</td>
+            <td>{{blacklist.a_email}}</td>
+            <td>{{blacklist.a_nickname}}</td>
+            <td>{{blacklist.b_reason}}</td>
+            <td>{{blacklist.created_time}}</td>
+            <td>
+                <a href="javascript:void(0);" @click="remove(blacklist.b_id,blacklist.a_nickname)" class="button bg-blue button-little">移除黑名单</a>
+            </td>
+        </tr>
+    </thead>
+</table>
+
+<% include footer.html %>
+
+<script src="/javascripts/blacklist.js"></script>

@@ -1,0 +1,86 @@
+<% include header.html%>
+
+<div id="goods">
+    <div class="screen-items">
+        <fieldset>
+            <legend>进行筛选</legend>
+            <form id="select_form">
+                <select name="select_school" id="" class="input">
+                    <option value="">全部</option>
+                    <option v-for="school in allschools" :value="school.s_id">{{school.s_name}}</option>
+                </select>
+                <select class="input" name="select_showornot">
+                    <option value="">全部</option>
+                    <option value="1">已审核</option>
+                    <option value="0">未审核</option>
+                </select>
+                <button class="button border-main" type="button" @click="screen">筛选</button>
+            </form>
+        </fieldset>
+        <fieldset>
+            <legend>查询</legend>
+            <form id="search-form">
+                <input type="text" class="input" placeholder="按商品名搜索" v-model="q">
+                <button class="button border-main" type="button" @click="search_goods">查询</button>
+            </form>
+        </fieldset>
+    </div>
+
+    <ul class="goods-items">
+        <li class="goods-item" v-for="goods in allgoods" v-if="goods.g_showornot == 0 || goods.g_showornot == 1">
+            <fieldset>
+                <legend v-if="goods.g_showornot == 0" style="color: #F75450">待审核</legend>
+                <legend v-if="goods.g_showornot == 1" style="color: #4BC0A5">审核通过</legend>
+                <div class="goods-pictures">
+                    <img :src="goods.g_picture1" v-if="goods.g_picture1 != null" alt="" class="goods-picture">
+                    <img :src="goods.g_picture2" v-if="goods.g_picture2 != null" alt="" class="goods-picture">
+                    <img :src="goods.g_picture3" v-if="goods.g_picture3 != null" alt="" class="goods-picture">
+                    <img :src="goods.g_picture4" v-if="goods.g_picture4 != null" alt="" class="goods-picture">
+                </div>
+                <div class="goods-name">
+                    <h4>{{goods.g_name}}</h4>
+                </div>
+                <div class="goods-desc">
+                    <p>
+                        {{goods.g_desc}}
+                    </p>
+                </div>
+                <div class="else-info">
+                    <span>{{goods.g_place}}</span>
+                    <b>{{goods.g_price}}</b>
+                    <span>{{goods.g_bargain}}</span>
+                </div>
+                <div class="user-info">
+                    {{goods.a_email}}
+                </div>
+                <div class="action" v-if="goods.g_showornot == 0">
+                    <a  class="button border-blue"@click="allowcheck_ornot(goods.g_id,goods.g_showornot)">通过</a>
+                    <a  class="button border-red" @click="reject(goods.g_id)">驳回</a>
+                </div>
+                <div class="action" v-else>
+                    <a class="button border-yellow" @click="allowcheck_ornot(goods.g_id,goods.g_showornot)">下架</a>
+                </div>
+            </fieldset>
+        </li>
+    </ul>
+
+
+    <!--驳回理由。模态框-->
+    <div id="mask" v-show="mask">
+        <div class="reason-area">
+            <h3>驳回理由</h3>
+            <textarea placeholder="驳回理由，不超过20个字,行文尽量规范,如：图片与标题不符、商品描述模糊等。" class="input" v-model="rejectReason"></textarea>
+            <button class="button border-main" @click="reject_Submit">确认</button>
+            <button class="button border-red" @click="cancel">取消</button>
+        </div>
+    </div>
+
+
+</div>
+
+
+<% include footer.html%>
+
+<link rel="stylesheet" href="/stylesheets/goods.css">
+<script src="/javascripts/jquery.form.js"></script>
+<script src="/javascripts/goods.js"></script>
